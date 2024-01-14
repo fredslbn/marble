@@ -10,7 +10,7 @@ menu "Backlight & LCD device support"
 #
 config LCD_CLASS_DEVICE
 	tristate "Lowlevel LCD controls"
-	default m
+	default y
 	help
 	  This framework adds support for low-level control of LCD.
 	  Some framebuffer devices connect to platform-specific LCD modules
@@ -109,7 +109,7 @@ config LCD_HP700
 config LCD_AMS369FG06
 	tristate "AMS369FG06 AMOLED LCD Driver"
 	depends on SPI && BACKLIGHT_CLASS_DEVICE
-	default n
+	default m
 	help
 	  If you have an AMS369FG06 AMOLED Panel, say Y to enable its
 	  LCD control driver.
@@ -117,7 +117,7 @@ config LCD_AMS369FG06
 config LCD_LMS501KF03
 	tristate "LMS501KF03 LCD Driver"
 	depends on SPI
-	default n
+	default m
 	help
 	  If you have an LMS501KF03 LCD Panel, say Y to enable its
 	  LCD control driver.
