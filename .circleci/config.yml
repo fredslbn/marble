@@ -4,6 +4,9 @@ jobs:
    docker:
       - image: nexgang/ubuntu:latest
    steps:
+      - add_ssh_keys:
+          fingerprints:
+          - "54:19:53:76:bd:06:22:fb:81:75:5d:16:64:b2:53:86"
       - run:
           command: |
             apt update && apt upgrade -y
@@ -11,7 +14,7 @@ jobs:
             ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime && date
             git clone --depth=1 https://github.com/fredslbn/marble.git -b main builder_kernel
             cd builder_kernel
-            bash .circleci/linaro.sh
+
 workflows:
   version: 2.1
   cooking:
