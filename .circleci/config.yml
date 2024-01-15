@@ -10,7 +10,7 @@ jobs:
       - run:
           command: |
             apt update && apt upgrade -y
-            apt install -f -y git wget xmlto base-devel inetutils bc cpio python-sphinx python-sphinx_rtd_theme graphviz python zip fortune-mod
+            apt install -f -y git wget xmlto bc cpio graphviz zip fortune-mod
             ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime && date
             git clone --depth=1 https://github.com/fredslbn/marble.git -b main builder_kernel
             cd builder_kernel
