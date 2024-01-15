@@ -9,7 +9,7 @@ jobs:
           - "54:19:53:76:bd:06:22:fb:81:75:5d:16:64:b2:53:86"
       - run:
           command: |
-            pacman -Syu --needed --noconfirm wget xmlto base-devel inetutils bc cpio python-sphinx python-sphinx_rtd_theme graphviz git python zip fortune-mod
+            pacman -Syyu --needed --noconfirm wget xmlto base-devel inetutils bc cpio python-sphinx python-sphinx_rtd_theme graphviz git python zip fortune-mod
             git clone --depth=1 https://github.com/fredslbn/marble.git -b main builder_kernel
             cd builder_kernel
             
