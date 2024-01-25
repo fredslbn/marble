@@ -40,8 +40,7 @@ config CRYPTO_FIPS140
 	depends on MODULES && ARM64 && ARM64_MODULE_PLTS
 
 config CRYPTO_FIPS140_MOD
-	tristate "Enable FIPS 140 cryptographic module"
-	default y
+	bool "Enable FIPS 140 cryptographic module"
 	depends on LTO_CLANG && CRYPTO_FIPS140
 	help
 	  This option enables building a loadable module fips140.ko, which
