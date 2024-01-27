@@ -121,7 +121,7 @@ START=$(date +"%s")
 	       
 	if [ -d ${KERNEL_DIR}/Neutron ];
 	   then
-	       make -j$(nproc --all) O=out \
+	       make -kj$(nproc --all) O=out \
 	       ARCH=arm64 \
 	       CC=$KERNEL_CLANG \
 	       CROSS_COMPILE=aarch64-linux-gnu- \
@@ -129,6 +129,14 @@ START=$(date +"%s")
 	       LD=${LINKER} \
 	       LLVM=1 \
 	       LLVM_IAS=1 \
+	       AS=llvm-as \
+	       AR=llvm-ar \
+	       NM=llvm-nm \
+	       OBJCOPY=llvm-objcopy \
+	       OBJDUMP=llvm-objdump \
+	       STRIP=llvm-strip \
+	       #READELF=llvm-readelf \
+	       #OBJSIZE=llvm-size \
 	       V=$VERBOSE 2>&1 | tee error.log
 	       
     fi
