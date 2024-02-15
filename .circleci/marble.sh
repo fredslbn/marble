@@ -12,10 +12,10 @@ DEVICE=gki
 # Kernel Defconfig
 DEFCONFIG=${DEVICE}_defconfig
 
-export CROSS_COMPILE=$KERNEL_DIR/clang-r416183b/bin/aarch64-linux-gnu-
-export CC=$KERNEL_DIR/clang-r416183b/bin/clang
+export CROSS_COMPILE=$KERNEL_DIR/clang-r498229b/bin/aarch64-linux-gnu-
+export CC=$KERNEL_DIR/clang-r498229b/bin/clang
 
-export PATH=$KERNEL_DIR/clang-r416183b/bin:$PATH
+export PATH=$KERNEL_DIR/clang-r498229b/bin:$PATH
 export PATH=$KERNEL_DIR/build-tools/path/linux-x86:$PATH
 export PATH=$KERNEL_DIR/gas/linux-x86:$PATH
 export TARGET_SOC=s5e9925
@@ -35,22 +35,20 @@ ZIPNAME="SUPER.KERNEL-MARBLE-CLO-$(TZ=Asia/Jakarta date +"%Y%m%d-%H%M").zip"
 
 
 clang(){
-  if [ ! -d $KERNEL_DIR/clang-r416183b ]; then
-    pause 'clone Android Clang/LLVM Prebuilts'
-    git clone https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r416183b $KERNEL_DIR/clang-r416183b
+  if [ ! -d $KERNEL_DIR/clang-r498229b ]; then
+  wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r498229b.tar.gz && mkdir clang-r498229b && tar -xzf clang-r498229b.tar.gz -C clang-r498229b/
+  CLANG_VERSION=$(clang --version | grep version | sed "s|clang version ||")
   fi
 }
 
 gas(){
   if [ ! -d $KERNEL_DIR/gas/linux-x86 ]; then
-    pause 'clone prebuilt binaries of GNU `as` (the assembler)'
     git clone https://android.googlesource.com/platform/prebuilts/gas/linux-x86 $KERNEL_DIR/gas/linux-x86
   fi
 }
 
 build_tools(){
   if [ ! -d $KERNEL_DIR/build-tools ]; then
-    pause 'clone prebuilt binaries of build tools'
     git clone https://android.googlesource.com/platform/prebuilts/build-tools $KERNEL_DIR/build-tools
   fi
 }

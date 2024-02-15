@@ -13,6 +13,7 @@ jobs:
             pacman -Syyu --needed --noconfirm wget xmlto base-devel inetutils bc cpio python-sphinx python-sphinx_rtd_theme graphviz git python zip fortune-mod
             git clone --depth=1 https://github.com/fredslbn/marble.git -b main builder_kernel
             cd builder_kernel
+            git submodule update --init --recursive
             
 workflows:
   version: 2.1
