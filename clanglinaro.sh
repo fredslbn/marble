@@ -19,24 +19,19 @@ export DEVICE=gki
 #VERSION=
 
 # Kernel Defconfig
-export DEFCONFIG=${DEVICE}_defconfig
+export DEFCONFIG=gki_defconfig
 
 # Select LTO variant ( Full LTO by default )
 DISABLE_LTO=0
 THIN_LTO=0
 
 # Files
-export IMAGE=$(pwd)/out/arch/arm64/boot/Image
+export IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz
 #DTBO=$(pwd)/out/arch/arm64/boot/dtbo.img
 #DTB=$(pwd)/out/arch/arm64/boot/dts/mediatek
 
 # Verbose Build
 export VERBOSE=0
-
-# Kernel Version
-#KERVER=$(make kernelversion)
-
-#COMMIT_HEAD=$(git log --oneline -1)
 
 # Date and Time
 export DATE=$(TZ=Asia/Jakarta date +"%Y%m%d-%T")
