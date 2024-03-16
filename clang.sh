@@ -4,10 +4,12 @@
 # Specify Kernel Directory
 export KERNEL_DIR="$(pwd)"
 
+git submodule update --init --recursive --remote
+
 ##----------------------------------------------------------##
 # Device Name and Model
-export MODEL=POCO
-export DEVICE=gki
+MODEL=POCO
+DEVICE=gki
 
 # Kernel Defconfig
 export DEFCONFIG=gki_defconfig
