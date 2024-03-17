@@ -29,7 +29,7 @@ export ARCH=arm64
 export KBUILD_BUILD_HOST=Pancali
 export KBUILD_BUILD_USER="unknown"
 
-export IMAGE=$(pwd)/out/arch/arm64/boot/Image
+export IMAGE=$(pwd)/arch/arm64/boot/Image.gz
 
 export KERNEL_MAKE_ENV="LOCALVERSION=-SUPER.KERNEL-Marble"
 
