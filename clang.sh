@@ -4,9 +4,6 @@
 # Specify Kernel Directory
 export KERNEL_DIR="$(pwd)"
 
-pacman -Sy --needed --noconfirm archlinux-keyring
-pacman -Syyu --needed --noconfirm wget xmlto base-devel inetutils bc cpio python-sphinx python-sphinx_rtd_theme graphviz git python zip fortune-mod
-
 git submodule update --init --recursive --remote
 
 ##----------------------------------------------------------##
@@ -29,14 +26,14 @@ export ARCH=arm64
 export KBUILD_BUILD_HOST=Pancali
 export KBUILD_BUILD_USER="unknown"
 
-export IMAGE=$(pwd)/arch/arm64/boot/Image.gz
+export IMAGE="$(pwd)/out/arch/arm64/boot/Image.gz"
 
 export KERNEL_MAKE_ENV="LOCALVERSION=-SUPER.KERNEL-Marble"
 
 # Date and Time
 export DATE=$(TZ=Asia/Jakarta date +"%Y%m%d-%T")
 # Specify Final Zip Name
-export ZIPNAME="SUPER.KERNEL-MARBLE-CLO-$(TZ=Asia/Jakarta date +"%Y%m%d-%H%M").zip"
+export ZIPNAME="SUPER.KERNEL-MARBLE-(clang)-$(TZ=Asia/Jakarta date +"%Y%m%d-%H%M").zip"
 
 
 clang(){
@@ -58,16 +55,16 @@ build_tools(){
   fi
 }
 
-build_kernel(){
+build_kernel() {
 
   echo "***** Compiling kernel *****"
   [ ! -d "out" ] && mkdir out
-  make -j$(nproc) -C $(pwd) $KERNEL_MAKE_ENV ${DEFCONFIG}
-  make -j$(nproc) -C $(pwd) $KERNEL_MAKE_ENV
+  make -j$(nproc) -C $(pwd)/out $KERNEL_MAKE_ENV ${DEFCONFIG}
+  make -j$(nproc) -C $(pwd)/out $KERNEL_MAKE_ENV
 
 }
 
-anykernel3(){
+anykernel3() {
 
 cp $IMAGE AnyKernel3
 cd AnyKernel3 || exit 1
