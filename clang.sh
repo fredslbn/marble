@@ -26,7 +26,7 @@ export ARCH=arm64
 export KBUILD_BUILD_HOST=Pancali
 export KBUILD_BUILD_USER="unknown"
 
-export IMAGE="$(pwd)/out/arch/arm64/boot/Image.gz"
+IMAGE="$(pwd)/arch/arm64/boot/Image.gz"
 
 export KERNEL_MAKE_ENV="LOCALVERSION=-SUPER.KERNEL-Marble"
 
@@ -59,14 +59,17 @@ build_kernel() {
 
   echo "***** Compiling kernel *****"
   [ ! -d "out" ] && mkdir out
-  make -j$(nproc) -C $(pwd)/out $KERNEL_MAKE_ENV ${DEFCONFIG}
-  make -j$(nproc) -C $(pwd)/out $KERNEL_MAKE_ENV
+  make -j$(nproc) -C $(pwd) $KERNEL_MAKE_ENV ${DEFCONFIG}
+  make -j$(nproc) -C $(pwd) $KERNEL_MAKE_ENV
+
+  echo "**** Verify Image.gz ****"
+  ls $(pwd)/arch/arm64/boot/Image.gz
 
 }
 
 anykernel3() {
 
-cp $IMAGE AnyKernel3
+cp $(pwd)/arch/arm64/boot/Image.gz AnyKernel3
 cd AnyKernel3 || exit 1
 zip -r9 ${ZIPNAME} *
 MD5CHECK=$(md5sum "$ZIPNAME" | cut -d' ' -f1)
