@@ -14,10 +14,10 @@ DEVICE=gki
 # Kernel Defconfig
 export DEFCONFIG=gki_defconfig
 
-export CROSS_COMPILE=$KERNEL_DIR/clang-r498229b/bin/aarch64-linux-gnu-
-export CC=$KERNEL_DIR/clang-r498229b/bin/clang
+export CROSS_COMPILE=$KERNEL_DIR/clang-r510928/bin/aarch64-linux-gnu-
+export CC=$KERNEL_DIR/clang-r510928/bin/clang
 
-export PATH=$KERNEL_DIR/clang-r498229b/bin:$PATH
+export PATH=$KERNEL_DIR/clang-r510928/bin:$PATH
 export PATH=$KERNEL_DIR/build-tools/path/linux-x86:$PATH
 export PATH=$KERNEL_DIR/gas/linux-x86:$PATH
 export TARGET_SOC=s5e9925
@@ -37,8 +37,8 @@ export ZIPNAME="SUPER.KERNEL-MARBLE-(clang)-$(TZ=Asia/Jakarta date +"%Y%m%d-%H%M
 
 
 clang(){
-  if [ ! -d $KERNEL_DIR/clang-r498229b ]; then
-  wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r498229b.tar.gz && mkdir clang-r498229b && tar -xzf clang-r498229b.tar.gz -C clang-r498229b/
+  if [ ! -d $KERNEL_DIR/clang-r510928 ]; then
+  wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r510928.tar.gz && mkdir clang-r510928 && tar -xzf clang-r510928.tar.gz -C clang-r510928/
   CLANG_VERSION=$(clang --version | grep version | sed "s|clang version ||")
   fi
 }
